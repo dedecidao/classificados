@@ -34,7 +34,7 @@
 
 
 
-                    <li class="navbar-brand"><a href="meus-anuncios.php">Meus Anuncios</a> </li>
+                    <li class="navbar-brand"><a href="meus-anuncios.php">Meus Anúncios</a> </li>
                     <li class="navbar-brand"><a href="sair.php">Sair</a> </li>
 
                 <?php else : ?>
