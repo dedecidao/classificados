@@ -29,11 +29,24 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
 <?php
 }
 
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $info = $a->getAnuncio($_GET['id']);
+    /**
+     *  VARIAVEL INFO É UM ARRAY ASSOCIATIVO QUE TRAZ OS RESULTADOS DA TABELA DE ANUNCIOS
+     */
+} else {
+?>
+    <script type="text/javascript">
+        window.location.href = "meus-anuncio.php";
+    </script>
+<?php
+}
+
 ?>
 
 <div class="container">
 
-    <h1>Cadastre um Anúncio</h1>
+    <h1>Editar Anúncio</h1>
 
 
     <form action="" method="POST" enctype="multipart/form-data">
@@ -51,20 +64,24 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
                 <?php endforeach; ?>
             </select>
         </div>
+
+
+
+
         <div class="form-group">
             <label for="titulo">Titulo:</label>
-            <input type="text" name="titulo" id="titulo" class="form-control">
+            <input type="text" name="titulo" id="titulo" class="form-control" value="<?php echo $info['titulo'] ?>">
         </div>
 
         <div class="form-group">
             <label for="valor">Valor:</label>
-            <input type="number" name="valor" id="valor" class="form-control">
+            <input type="number" name="valor" id="valor" class="form-control" value="<?php echo $info['valor'] ?>">
         </div>
 
 
         <div class="form-group">
             <label for="descricao">Descrição:</label>
-            <textarea name="descricao" id="descricao" cols="100" rows="10" style="display: block; "></textarea>
+            <textarea name="descricao" id="descricao" cols="100" rows="10" style="display: block; "><?php echo $info['descricao'] ?></textarea>
         </div>
 
         <div class="form-group">
@@ -77,7 +94,7 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
         </div>
 
 
-        <input type="submit" value="Cadastrar Novo Anúncio" class="btn btn-default">
+        <input type="submit" value="Atualizar" class="btn btn-default">
     </form>
 
 </div>
